@@ -18,11 +18,20 @@ function main() {
     	for(x = 0; x < wall.length;x++){
 		wall[x].addEventListener("mouseover",function() {
 			for(x = 0; x < wall.length;x++){
-				document.getElementById("status").textContent = "Sorry You Lose!!";
+				document.getElementById("status").textContent = "Sorry You Lose!! :-(";
 				wall[x].setAttribute("class", "boundary you lose");
 			}
 		});
     	}
 
     /*------------------------------------------------------*/
+
+    /*---------------------- Exercise 3 -------------------*/
+	var complete = document.getElementById("end");
+	complete.addEventListener("mouseover",function() {
+		if(document.getElementByClassName("boundary youlose").length == 0){
+	alert("You Win!! :-)");
+}
+	});
+    /*-------------------------------------------------------*/
 }
