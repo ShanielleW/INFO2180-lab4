@@ -7,18 +7,18 @@ function main() {
     /*-------------------- Exercise 1 --------------------*/
     
 	let wallColor = document.getElementById("boundary1");
-	wallColor.onmouseover = function() {
-        	this.className = "boundary youlose";
+	wallColor.addEventListener("mouseover", function() {
+        	this.setAttribute("class","boundary youlose");
     	});
     
     /*-----------------------------------------------------*/
 
     /*---------------------- Exercise 2 -------------------*/
     	let wall = document.querySelectorAll(".boundary");
-    	for(x = 0; x < wall.length;x++){
+    	for(x = 0; x < wall.length-1;x++){
 		wall[x].addEventListener("mouseover",function() {
-			for(x = 0; x < wall.length;x++){
-				document.getElementById("status").textContent = "Sorry You Lose!! :-(";
+			for(x = 0; x < wall.length-1;x++){
+				document.getElementById("status").innerHTML = "Sorry You Lose!! :-(";
 				wall[x].setAttribute("class", "boundary you lose");
 			}
 		});
@@ -30,7 +30,20 @@ function main() {
     /*---------------------- Exercise 4 ----------------------*/
 	restart = document.getElementById("start");
 	restart.addEventListener("click", function() {
-		location.reload();
+		var walls = document.querySelectorAll(".boundary");
+		if (walls.length != 0){
+			for(var i = 0; i < walls.length; i++){
+				if(walls[i].className == "boundary example"){
+					continue;
+				}
+				walls[i].className = "boundary";
+			}
+		}
+
+		status.innerHTML = "Move your mouse over the \"S\" to begin.";
+
+		//location.reload();
+}
 	});
     /*---------------------------------------------------------*/
 
@@ -40,9 +53,9 @@ function main() {
 	finish.addEventListener("mouseover", function() {
 		switch(document.querySelectorAll(".youlose").length){
 			case 0:
-				current.textContent = "Congratz You Win!! :)";
+				current.innerHTML = "Congratz You Win!! :)";
 			default:
-				current.textContent = "Sorry You Lose :(";
+				current.innerHTML = "Sorry You Lose :(";
 		}
 	});
 
