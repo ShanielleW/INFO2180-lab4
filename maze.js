@@ -18,8 +18,9 @@ function main() {
     	for(x = 0; x < wall.length-1;x++){
 		wall[x].addEventListener("mouseover",function() {
 			for(x = 0; x < wall.length-1;x++){
-				document.getElementById("status").innerHTML = "Sorry You Lose!! :-(";
-				wall[x].setAttribute("class", "boundary you lose");
+				document.getElementById("status").innerHTML = "You Lose!! :-( Touched Wall";
+				
+				wall[x].setAttribute("class", "boundary youlose");
 			}
 		});
     	}
@@ -30,20 +31,7 @@ function main() {
     /*---------------------- Exercise 4 ----------------------*/
 	restart = document.getElementById("start");
 	restart.addEventListener("click", function() {
-		var walls = document.querySelectorAll(".boundary");
-		if (walls.length != 0){
-			for(var i = 0; i < walls.length; i++){
-				if(walls[i].className == "boundary example"){
-					continue;
-				}
-				walls[i].className = "boundary";
-			}
-		}
-
-		status.innerHTML = "Move your mouse over the \"S\" to begin.";
-
-		//location.reload();
-}
+		location.reload();
 	});
     /*---------------------------------------------------------*/
 
@@ -51,13 +39,32 @@ function main() {
 	var finish = document.getElementById("end");
 	var current = document.getElementById("status");
 	finish.addEventListener("mouseover", function() {
-		switch(document.querySelectorAll(".youlose").length){
-			case 0:
+		
+		for(x = 0; x < wall.length-1;x++){
+			if(document.querySelectorAll(".youlose").length == 0){
 				current.innerHTML = "Congratz You Win!! :)";
-			default:
-				current.innerHTML = "Sorry You Lose :(";
+			}
 		}
+		location.reload();
+		 
+		
 	});
 
     /*-------------------------------------------------------------*/
+
+    /*---------------------- Exercise 6 -----------------------------*/
+	maze = document.getElementById("maze");
+	maze.addEventListener("mouseleave", function() {
+		s = 0;
+		while(s < wall.length){
+			document.getElementById("status").innerHTML = "That's Cheating Stay In Bounds >:(";
+			
+			wall[s].setAttribute("class","boundary youlose");
+			s++;
+		}
+	})
+	
+	
+	
+    /*---------------------------------------------------------------*/
 }
