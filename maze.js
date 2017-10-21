@@ -34,4 +34,11 @@ function main() {
 }
 	});
     /*-------------------------------------------------------*/
+    
+    /*---------------------- Exercise 4 ----------------------*/
+	restart = document.getElementById("start");
+	restart.addEventListener("click", function() {
+		location.reload();
+	});
+    /*---------------------------------------------------------*/
 }
