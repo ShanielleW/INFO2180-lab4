@@ -26,14 +26,6 @@ function main() {
 
     /*------------------------------------------------------*/
 
-    /*---------------------- Exercise 3 -------------------*/
-	var complete = document.getElementById("end");
-	complete.addEventListener("mouseover",function() {
-		if(document.getElementByClassName("boundary youlose").length == 0){
-	alert("You Win!! :-)");
-}
-	});
-    /*-------------------------------------------------------*/
     
     /*---------------------- Exercise 4 ----------------------*/
 	restart = document.getElementById("start");
@@ -41,4 +33,18 @@ function main() {
 		location.reload();
 	});
     /*---------------------------------------------------------*/
+
+    /*---------------------- Exercise 5 -------------------------*/
+	var finish = document.getElementById("end");
+	var current = document.getElementById("status");
+	finish.addEventListener("mouseover", function() {
+		switch(document.querySelectorAll(".youlose").length){
+			case 0:
+				current.textContent = "Congratz You Win!! :)";
+			default:
+				current.textContent = "Sorry You Lose :(";
+		}
+	});
+
+    /*-------------------------------------------------------------*/
 }
